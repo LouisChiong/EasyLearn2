@@ -64,8 +64,6 @@ import java.util.Map;
 public class Quiz extends AppCompatActivity {
 
     public static final String TAG = "my.edu.tarc.lab44";
-    ListView listViewCourse;
-    List<QuizContents> quiz, questions;
     private ProgressDialog pDialog;
     private static String GET_URL;
     RequestQueue queue;
