@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3"
+
+    tools:context="my.edu.taruc.easylearn.MainActivity">
+
+    <Button
+        android:id="@+id/buttonQuiz"
+        android:layout_width="298dp"
+        android:layout_height="89dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="80dp"
+        android:background="#FFFF"
+        android:onClick="OnclickQuiz"
+        android:text="Quiz"
+        android:textSize="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLearning" />
+
+    <Button
+        android:id="@+id/buttonLearning"
+        android:layout_width="298dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="115dp"
+        android:background="#FFFF"
+        android:onClick="OnclickLearning"
+        android:text="Learning"
+        android:textSize="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
