@@ -9,17 +9,20 @@
 
     <TextView
         android:id="@+id/textViewQuestion"
-        android:layout_width="327dp"
+        android:layout_width="366dp"
         android:layout_height="262dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:alpha="0.7"
         android:background="#ECEFF1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="27dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.512" />
+        android:textColor="#000000"
+        android:textSize="80px"
+        app:layout_constraintBottom_toTopOf="@+id/buttonA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonB"
@@ -30,6 +33,8 @@
         android:layout_marginRight="8dp"
         android:onClick="OnclickAnswer"
         android:text="B"
+        android:textColor="#000000"
+        android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/buttonD"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/buttonA"
@@ -45,6 +50,8 @@
         android:layout_marginTop="0dp"
         android:onClick="OnclickAnswer"
         android:text="D"
+        android:textColor="#000000"
+        android:textSize="40px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/buttonC"
@@ -60,6 +67,8 @@
         android:layout_marginLeft="30dp"
         android:onClick="OnclickAnswer"
         android:text="C"
+        android:textColor="#000000"
+        android:textSize="40px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -71,6 +80,8 @@
         android:layout_marginLeft="30dp"
         android:onClick="OnclickAnswer"
         android:text="A"
+        android:textColor="#000000"
+        android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/buttonC"
         app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void OnclickLearning(View view){
         Intent intent = new Intent(this,Levels.class);
-        intent.putExtra("SELECTION","learing");
+        intent.putExtra("SELECTION","learning");
         startActivity(intent);
     }
     public void OnclickQuiz(View view) {
