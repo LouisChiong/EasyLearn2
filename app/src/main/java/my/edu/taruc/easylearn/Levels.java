@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class Levels extends AppCompatActivity {
 
-
     private String selection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,39 +19,32 @@ public class Levels extends AppCompatActivity {
         selection = intent.getStringExtra("SELECTION");
     }
 
-    public void onClickFrom1(View view){
-        String level ="1";
+    public void onClickLevel(View view){
+        Button b = (Button)view;
+        String buttonText = b.getText().toString();
+        String level="";
+        switch(buttonText){
+            case "Form 1":
+                level="1";
+                break;
+            case "Form 2":
+                level="2";
+                break;
+            case "Form 3":
+                level="3";
+                break;
+            case "Form 4":
+                level="4";
+                break;
+            case "From 5":
+                level="5";
+                break;
+        }
+
         Intent intent = new Intent(this, Chapters.class);
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
     }
-    public void onClickFrom2(View view){
-        String level ="2";
-        Intent intent = new Intent(this, Chapters.class);
-        intent.putExtra("LEVEL", level);
-        intent.putExtra("SELECTION", selection);
-        startActivity(intent);
-    }
-    public void onClickFrom3(View view){
-        String level ="3";
-        Intent intent = new Intent(this, Chapters.class);
-        intent.putExtra("LEVEL", level);
-        intent.putExtra("SELECTION", selection);
-        startActivity(intent);
-    }
-    public void onClickFrom4(View view){
-        String level ="4";
-        Intent intent = new Intent(this, Chapters.class);
-        intent.putExtra("LEVEL", level);
-        intent.putExtra("SELECTION", selection);
-        startActivity(intent);
-    }
-    public void onClickFrom5(View view){
-        String level ="5";
-        Intent intent = new Intent(this, Chapters.class);
-        intent.putExtra("LEVEL", level);
-        intent.putExtra("SELECTION", selection);
-        startActivity(intent);
-    }
+
 }
