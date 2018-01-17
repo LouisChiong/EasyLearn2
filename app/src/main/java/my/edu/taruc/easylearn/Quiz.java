@@ -151,14 +151,10 @@ public class Quiz extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Result")
                 .setMessage("You have correct "+score+" out of 10 questions!")
-                .setCancelable(false)
                 .setPositiveButton("OK",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        String selection = "quiz";
-                        Intent intent = new Intent(getApplicationContext(),Levels.class);
-                        intent.putExtra("LEVEL",level);
-                        intent.putExtra("SELECTION",selection);
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         startActivity(intent);
                     }
                 }).create().show();
@@ -166,7 +162,7 @@ public class Quiz extends AppCompatActivity {
 
     public void displayQuestions(int position){
         if(dataLevels[position]!=null){
-            textViewQuestion.setText("Question "+(count+1)+"\n============\n"+dataQuestions[position]);
+            textViewQuestion.setText(dataQuestions[position]);
             buttonA.setText(dataAnswerA[position]);
             buttonB.setText(dataAnswerB[position]);
             buttonC.setText(dataAnswerC[position]);

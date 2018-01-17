@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">EasyLearn</string>
-    <string name="get_quiz_url">http://chiongluis.000webhostapp.com/getQuiz.php</string>
+    <string name="level">Level</string>
+    <string name="chapter">Chapter</string>
+    <string name="learning">Learning</string>
+    <string name="quiz">Quiz</string>
 </resources>

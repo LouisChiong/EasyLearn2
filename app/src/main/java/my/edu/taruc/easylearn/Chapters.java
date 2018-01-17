@@ -3,15 +3,16 @@ package my.edu.taruc.easylearn;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class Chapters extends AppCompatActivity {
 
+    private static int currentHighScore;
     private String selection;
     private String level;
-    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +22,25 @@ public class Chapters extends AppCompatActivity {
         selection = intent.getStringExtra("SELECTION");
         level = intent.getStringExtra("LEVEL");
 
-        textView = (TextView)findViewById(R.id.textView);
-        textView.setText(selection.toString()+", "+level);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,Levels.class);
+        intent.putExtra("SELECTION", selection);
+        startActivity(intent);
+        finish();
     }
 
     public void onClickChapter1(View view){
@@ -31,12 +49,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }
@@ -46,12 +66,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }
@@ -61,12 +83,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }
@@ -76,12 +100,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }
@@ -91,12 +117,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }
@@ -106,12 +134,14 @@ public class Chapters extends AppCompatActivity {
             Intent intent = new Intent(this, Quiz.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
         if(selection.equals("learning")){
             Intent intent = new Intent(this, Learning.class);
             intent.putExtra("CHAPTER", chapter);
             intent.putExtra("LEVEL", level);
+            intent.putExtra("SELECTION",selection);
             startActivity(intent);
         }
     }

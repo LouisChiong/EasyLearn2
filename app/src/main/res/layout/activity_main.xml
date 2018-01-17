@@ -9,7 +9,6 @@
     tools:context="my.edu.taruc.easylearn.MainActivity">
 
     <Button
-        android:id="@+id/buttonQuiz"
         android:layout_width="298dp"
         android:layout_height="89dp"
         android:layout_marginLeft="8dp"

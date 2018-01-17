@@ -7,22 +7,32 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/mathicon"
+
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Levels" />
-        <activity android:name=".Chapters" />
-        <activity android:name=".Quiz" />
-        <activity android:name=".Learning"></activity>
+        <activity android:name=".Levels"
+            android:label="@string/level"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Chapters"
+            android:label="@string/chapter"
+            android:parentActivityName=".Levels"/>
+        <activity android:name=".Quiz"
+            android:label="@string/quiz"
+            android:parentActivityName=".Chapters"/>
+        <activity android:name=".Learning"
+            android:label="@string/learning"
+            android:parentActivityName=".Chapters">
+        </activity>
     </application>
 
 </manifest>
