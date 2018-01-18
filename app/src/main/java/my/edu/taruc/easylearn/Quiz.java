@@ -68,8 +68,7 @@ public class Quiz extends AppCompatActivity {
     private static String GET_URL;
     RequestQueue queue;
 
-    private String chapter, level, correctAnswers;
-    private int chapters,levels;
+    private String chapter, level, correctAnswers, selection;
     private int score;
     private int count=0;
     private int countIndex = 0;
@@ -98,6 +97,8 @@ public class Quiz extends AppCompatActivity {
     String[] dataAnswerD;
     String[] dataCorrectAnswer;
 
+    int[] correctedResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,9 +107,9 @@ public class Quiz extends AppCompatActivity {
         Intent intent = getIntent();
         chapter = intent.getStringExtra("CHAPTER");
         level = intent.getStringExtra("LEVEL");
+        selection = intent.getStringExtra("SELECTION");
 
-        chapters = Integer.parseInt(chapter);
-        levels = Integer.parseInt(level);
+
 
         textViewQuestion = (TextView)findViewById(R.id.textViewQuestion);
         buttonA = (Button)findViewById(R.id.buttonA);
@@ -116,10 +117,18 @@ public class Quiz extends AppCompatActivity {
         buttonC = (Button)findViewById(R.id.buttonC);
         buttonD = (Button)findViewById(R.id.buttonD);
 
-        textViewQuestion.setText(levels+", "+chapters);
+        correctedResult = new int[10];
+
+        ProgressDialog progressDialog = new ProgressDialog(Quiz.this);
+        progressDialog.setTitle("Download");
+        progressDialog.setMessage("Loading... Please Wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
         getQuizs();
+
+
 
         if(dataLevels[0]!=null){
             displayQuestions(0);
@@ -128,16 +137,39 @@ public class Quiz extends AppCompatActivity {
                 pDialog.setMessage("No data !");
             pDialog.show();
         }
+        progressDialog.dismiss();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,Chapters.class);
+        intent.putExtra("SELECTION", selection);
+        intent.putExtra("LEVEL",level);
+        startActivity(intent);
+        finish();
     }
 
     public void OnclickAnswer(View view){
         Button b = (Button)view;
         String buttonText = b.getText().toString();
-        count+=1;
+
         if(buttonText.equals(correctAnswers)){
             score+=1;
+            correctedResult[score-1]=count;
         }
+        count+=1;
         if(count<10){
             displayQuestions(count);
         }else{
@@ -148,13 +180,24 @@ public class Quiz extends AppCompatActivity {
     }
 
     public void resultDialog(){
+        String strCorrectResult="";
+        if(score>0){
+            strCorrectResult+="\nYou have corrected the following question(s): \n";
+            for(int i=0;i<score;i++){
+                strCorrectResult+="Question "+correctedResult[i]+"\n";
+            }
+        }
         new AlertDialog.Builder(this)
                 .setTitle("Result")
-                .setMessage("You have correct "+score+" out of 10 questions!")
+                .setMessage("You have correct "+score+" out of 10 questions!"+strCorrectResult)
+                .setCancelable(false)
                 .setPositiveButton("OK",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        String selection = "quiz";
+                        Intent intent = new Intent(getApplicationContext(),Levels.class);
+                        intent.putExtra("LEVEL", level);
+                        intent.putExtra("SELECTION", selection);
                         startActivity(intent);
                     }
                 }).create().show();
@@ -162,7 +205,7 @@ public class Quiz extends AppCompatActivity {
 
     public void displayQuestions(int position){
         if(dataLevels[position]!=null){
-            textViewQuestion.setText(dataQuestions[position]);
+            textViewQuestion.setText((count+1)+"/10"+"\n============\n"+dataQuestions[position]);
             buttonA.setText(dataAnswerA[position]);
             buttonB.setText(dataAnswerB[position]);
             buttonC.setText(dataAnswerC[position]);
@@ -241,6 +284,8 @@ public class Quiz extends AppCompatActivity {
         }
 
         try{
+
+
             JSONArray ja =new JSONArray(result);
             JSONObject jo=null;
 
