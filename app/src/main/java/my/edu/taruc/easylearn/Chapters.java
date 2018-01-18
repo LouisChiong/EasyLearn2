@@ -1,6 +1,11 @@
 package my.edu.taruc.easylearn;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -42,108 +47,66 @@ public class Chapters extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public  void onClickChapter(View view){
+        Button b = (Button)view;
+        String buttontext = b.getText().toString();
+        String chapter;
+        if(buttontext.equals("Chapter 1")){
+            chapter="1";
+        }else if(buttontext.equals("Chapter 2")){
+            chapter="2";
+        }else if(buttontext.equals("Chapter 3")){
+            chapter="3";
+        }else if(buttontext.equals("Chapter 4")){
+            chapter="4";
+        }else if(buttontext.equals("Chapter 5")){
+            chapter="5";
+        }else if(buttontext.equals("Chapter 6")){
+            chapter="6";
+        }else{
+            chapter=null;
+        }
 
-    public void onClickChapter1(View view){
-        String chapter = "1";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-    }
-    public void onClickChapter2(View view){
-        String chapter = "2";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
+        if (!isConnected()) {
+            errorMessageDialog();
+        }else {
+            if(selection.equals("quiz")){
+                Intent intent = new Intent(this, Quiz.class);
+                intent.putExtra("CHAPTER", chapter);
+                intent.putExtra("LEVEL", level);
+                intent.putExtra("SELECTION",selection);
+                startActivity(intent);
+            }
+            if(selection.equals("learning")){
+                Intent intent = new Intent(this, Learning.class);
+                intent.putExtra("CHAPTER", chapter);
+                intent.putExtra("LEVEL", level);
+                intent.putExtra("SELECTION",selection);
+                startActivity(intent);
+            }
         }
     }
-    public void onClickChapter3(View view){
-        String chapter = "3";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
+
+    public void errorMessageDialog(){
+        new AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage("You are not accessing to the network!")
+                .setCancelable(false)
+                .setPositiveButton("OK",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+
+                    }
+                }).create().show();
     }
-    public void onClickChapter4(View view){
-        String chapter = "4";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-    }
-    public void onClickChapter5(View view){
-        String chapter = "5";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-    }
-    public void onClickChapter6(View view){
-        String chapter = "6";
-        if(selection.equals("quiz")){
-            Intent intent = new Intent(this, Quiz.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
-        if(selection.equals("learning")){
-            Intent intent = new Intent(this, Learning.class);
-            intent.putExtra("CHAPTER", chapter);
-            intent.putExtra("LEVEL", level);
-            intent.putExtra("SELECTION",selection);
-            startActivity(intent);
-        }
+
+    private boolean isConnected() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
     }
 
 }

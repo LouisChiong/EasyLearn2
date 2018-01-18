@@ -22,35 +22,66 @@ public class Levels extends AppCompatActivity {
 
     public void onClickFrom1(View view){
         String level ="1";
-        Intent intent = new Intent(this, Chapters.class);
+        Intent intent;
+        if(selection.equals("learning")){
+            intent = new Intent(this, Learning.class);
+
+        }else{
+            intent = new Intent(this, Chapters.class);
+        }
+
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
     }
     public void onClickFrom2(View view){
         String level ="2";
-        Intent intent = new Intent(this, Chapters.class);
+        Intent intent;
+        if(selection.equals("learning")){
+            intent = new Intent(this, Learning.class);
+
+        }else{
+            intent = new Intent(this, Chapters.class);
+        }
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
     }
     public void onClickFrom3(View view){
         String level ="3";
-        Intent intent = new Intent(this, Chapters.class);
+        Intent intent;
+        if(selection.equals("learning")){
+            intent = new Intent(this, Learning.class);
+
+        }else{
+            intent = new Intent(this, Chapters.class);
+        }
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
     }
     public void onClickFrom4(View view){
         String level ="4";
-        Intent intent = new Intent(this, Chapters.class);
+        Intent intent;
+        if(selection.equals("learning")){
+            intent = new Intent(this, Learning.class);
+
+        }else{
+            intent = new Intent(this, Chapters.class);
+        }
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
     }
     public void onClickFrom5(View view){
         String level ="5";
-        Intent intent = new Intent(this, Chapters.class);
+        Intent intent;
+        if(selection.equals("learning")){
+            intent = new Intent(this, Learning.class);
+
+        }else{
+            intent = new Intent(this, Chapters.class);
+        }
         intent.putExtra("LEVEL", level);
         intent.putExtra("SELECTION", selection);
         startActivity(intent);
